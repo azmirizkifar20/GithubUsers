@@ -1,6 +1,9 @@
 package org.marproject.githubuser.view.favorite
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -11,6 +14,7 @@ import org.marproject.githubuser.R
 import org.marproject.githubuser.data.local.entity.User
 import org.marproject.githubuser.databinding.ActivityFavoriteBinding
 import org.marproject.githubuser.utils.adapter.FavoriteAdapter
+import org.marproject.githubuser.view.setting.SettingActivity
 
 class FavoriteActivity : AppCompatActivity() {
 
@@ -51,6 +55,19 @@ class FavoriteActivity : AppCompatActivity() {
             adapter.setUsers(it)
         else
             view_empty.visibility = View.VISIBLE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_setting, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
+        R.id.setting -> {
+            startActivity(Intent(this, SettingActivity::class.java))
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {
