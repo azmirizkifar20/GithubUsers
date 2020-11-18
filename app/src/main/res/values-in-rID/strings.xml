@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Github User</string>
+    <string name="github_user">Github User</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="username">azmirizkifar20</string>
+    <string name="profile_url">https://github.com/azmirizkifar20</string>
+    <string name="image_description">Deskripsi gambar</string>
+    <string name="search">Cari pengguna</string>
+    <string name="full_name">Nama lengkap</string>
+    <string name="setting">Pengaturan</string>
+    <string name="language">Bahasa</string>
+    <string name="about_me">Tentang saya</string>
+    <string name="made_with">Dibuat sepenuh</string>
+    <string name="by_azmirf20">oleh azmirf20</string>
+    <string name="profile">Profil</string>
+    <string name="intro">Halo, nama saya Muhamad Azmi Rizkifar. Saat ini saya adalah mahasiswa rekayasa perangkat lunak aplikasi di Telkom University</string>
+    <string name="email">m.azmirizkifar20@gmail.com</string>
+    <string name="name">Muhamad Azmi Rizkifar</string>
+    <string name="no_data">Data kosong</string>
+    <string name="favorite">Favorit</string>
+    <string name="preference_name">alarmPref</string>
+    <string name="saved_switch">savedSwitch</string>
+    <string name="favorite_user">Pengguna favorit</string>
+    <string name="alarm_message">Alarm terpasang pada pukul 9</string>
+    <string name="reminder_setting">Pengingat di jam 09.00</string>
+    <string name="reminder_message">jangan lupa untuk cek aplikasi ini!</string>
+</resources>
