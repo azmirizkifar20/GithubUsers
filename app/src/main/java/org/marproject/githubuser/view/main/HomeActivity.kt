@@ -3,38 +3,38 @@ package org.marproject.githubuser.view.main
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.marproject.githubuser.R
 import org.marproject.githubuser.data.network.response.UserResponse
-import org.marproject.githubuser.databinding.ActivityMainBinding
+import org.marproject.githubuser.databinding.ActivityHomeBinding
 import org.marproject.githubuser.utils.adapter.UserAdapter
 import org.marproject.githubuser.view.favorite.FavoriteActivity
 import org.marproject.githubuser.view.setting.SettingActivity
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     // binding
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityHomeBinding
 
     // viewModel
-    private val viewModel: MainViewModel by viewModel()
+    private val viewModel: HomeViewModel by viewModel()
 
     // util
     private lateinit var adapter: UserAdapter
-    private val users = arrayListOf<UserResponse>()
 
+    private val users = arrayListOf<UserResponse>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
 
         // setup toolbar
         setupToolbar()
@@ -45,16 +45,15 @@ class MainActivity : AppCompatActivity() {
         // init ui
         initUI()
 
-        // set content view
         setContentView(binding.root)
     }
 
     private fun initUI() {
         // setup adapter
         with(binding.recyclerviewUser) {
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = LinearLayoutManager(this@HomeActivity)
             setHasFixedSize(true)
-            adapter = this@MainActivity.adapter
+            adapter = this@HomeActivity.adapter
         }
 
         // fetch data
@@ -97,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     if (query != null){
                         adapter.setUsers(listOf())
-                        viewModel.searchUser(query).observe(this@MainActivity, observer)
+                        viewModel.searchUser(query).observe(this@HomeActivity, observer)
                     }
                     return true
                 }
@@ -119,7 +118,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onMenuItemActionCollapse(p0: MenuItem?): Boolean {
-                viewModel.fetchData().observe(this@MainActivity, observer)
+                viewModel.fetchData().observe(this@HomeActivity, observer)
                 return true
             }
 
