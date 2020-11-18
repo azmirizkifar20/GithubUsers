@@ -8,6 +8,7 @@ import org.marproject.githubuser.data.network.service.ApiService
 import org.marproject.githubuser.view.detail.DetailViewModel
 import org.marproject.githubuser.view.detail.followers.FollowersViewModel
 import org.marproject.githubuser.view.detail.following.FollowingViewModel
+import org.marproject.githubuser.view.favorite.FavoriteViewModel
 import org.marproject.githubuser.view.main.MainViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,6 +36,7 @@ val networkModule = module {
 
 val viewModelModule = module {
     viewModel { MainViewModel(get()) }
+    viewModel { FavoriteViewModel(get()) }
     viewModel { FollowersViewModel(get()) }
     viewModel { FollowingViewModel(get()) }
     viewModel { DetailViewModel(get(), get()) }
