@@ -1,9 +1,9 @@
 package org.marproject.githubuser.view.detail
 
 import android.app.Application
-import android.content.ContentValues
 import android.net.Uri
 import android.util.Log
+import androidx.core.content.contentValuesOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -67,12 +67,13 @@ class DetailViewModel(private val apiService: ApiService, private val applicatio
     fun insertFavorite(data: User) {
         uiScope.launch {
             withContext(Dispatchers.IO) {
-                val values = ContentValues()
-                values.put(DatabaseContract.UserColumns._ID, data.id)
-                values.put(DatabaseContract.UserColumns.NAME, data.name)
-                values.put(DatabaseContract.UserColumns.USERNAME, data.username)
-                values.put(DatabaseContract.UserColumns.PROFILE, data.profile)
-                values.put(DatabaseContract.UserColumns.AVATAR, data.avatar)
+                val values = contentValuesOf(
+                    DatabaseContract.UserColumns._ID to data.id,
+                    DatabaseContract.UserColumns.NAME to data.name,
+                    DatabaseContract.UserColumns.USERNAME to data.username,
+                    DatabaseContract.UserColumns.PROFILE to data.profile,
+                    DatabaseContract.UserColumns.AVATAR to data.avatar
+                )
 
                 application.contentResolver.insert(CONTENT_URI, values)
             }

@@ -1,8 +1,11 @@
 package org.marproject.githubuser.view.detail
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -16,6 +19,7 @@ import org.marproject.githubuser.data.network.response.UserResponse
 import org.marproject.githubuser.databinding.ActivityDetailUserBinding
 import org.marproject.githubuser.utils.adapter.SectionAdapter
 import org.marproject.githubuser.utils.helpers.MappingHelper.mapRemoteModelToLocal
+import org.marproject.githubuser.view.setting.SettingActivity
 
 class DetailUserActivity : AppCompatActivity() {
 
@@ -132,6 +136,19 @@ class DetailUserActivity : AppCompatActivity() {
                     R.drawable.ic_favorite
                 )
             )
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_setting, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
+        R.id.setting -> {
+            startActivity(Intent(this, SettingActivity::class.java))
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {

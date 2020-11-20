@@ -3,8 +3,15 @@
     package="org.marproject.githubuser">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <permission android:name="org.marproject.githubuser.READ_DATABASE" android:protectionLevel="normal"/>
-    <permission android:name="org.marproject.githubuser.WRITE_DATABASE" android:protectionLevel="normal"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <permission
+        android:name="org.marproject.githubuser.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="org.marproject.githubuser.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:name=".MyApplication"
@@ -14,6 +21,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubUser">
+
+        <receiver
+            android:name=".utils.receiver.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
         <provider
             android:name=".utils.provider.FavoriteProvider"
             android:authorities="org.marproject.githubuser"
@@ -26,7 +39,10 @@
         <activity android:name=".view.detail.DetailUserActivity" />
         <activity android:name=".view.setting.SettingActivity" />
         <activity android:name=".view.about.AboutActivity" />
-        <activity android:name=".view.main.MainActivity">
+        <activity android:name=".view.main.HomeActivity" />
+        <activity
+            android:name=".view.splash.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
