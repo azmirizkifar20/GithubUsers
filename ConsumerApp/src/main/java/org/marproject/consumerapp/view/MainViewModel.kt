@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
-import org.marproject.consumerapp.data.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import org.marproject.consumerapp.data.DatabaseContract.CONTENT_URI
 import org.marproject.consumerapp.data.User
 import org.marproject.consumerapp.utils.MappingHelper
 

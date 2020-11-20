@@ -30,13 +30,13 @@ class FavoriteAdapter(private val activity: Activity) : RecyclerView.Adapter<Fav
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         val user = users[position]
-        holder.bind(user, position)
+        holder.bind(user)
     }
 
     override fun getItemCount(): Int = users.size
 
     inner class FavoriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(user: User, position: Int) {
+        fun bind(user: User) {
             with(itemView) {
                 tv_username.text = user.username
                 tv_profile.text = user.profile

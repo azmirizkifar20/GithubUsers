@@ -1,8 +1,13 @@
 package org.marproject.githubuser.utils.helpers
 
+import android.content.ContentValues
 import android.database.Cursor
 import org.marproject.githubuser.data.local.entity.User
-import org.marproject.githubuser.data.local.sqlite.DatabaseContract
+import org.marproject.githubuser.data.local.room.DatabaseContract.AVATAR
+import org.marproject.githubuser.data.local.room.DatabaseContract.ID
+import org.marproject.githubuser.data.local.room.DatabaseContract.NAME
+import org.marproject.githubuser.data.local.room.DatabaseContract.PROFILE
+import org.marproject.githubuser.data.local.room.DatabaseContract.USERNAME
 import org.marproject.githubuser.data.network.response.UserResponse
 
 object MappingHelper {
@@ -12,11 +17,11 @@ object MappingHelper {
 
         userCursor?.apply {
             while (moveToNext()) {
-                val id = getInt(getColumnIndexOrThrow(DatabaseContract.UserColumns._ID))
-                val name = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.NAME))
-                val username = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.USERNAME))
-                val profile = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.PROFILE))
-                val avatar = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.AVATAR))
+                val id = getInt(getColumnIndexOrThrow(ID))
+                val name = getString(getColumnIndexOrThrow(NAME))
+                val username = getString(getColumnIndexOrThrow(USERNAME))
+                val profile = getString(getColumnIndexOrThrow(PROFILE))
+                val avatar = getString(getColumnIndexOrThrow(AVATAR))
 
                 userList.add(User(id, name, username, profile, avatar))
             }
@@ -30,16 +35,26 @@ object MappingHelper {
 
         userCursor?.apply {
             moveToFirst()
-            val id = getInt(getColumnIndexOrThrow(DatabaseContract.UserColumns._ID))
-            val name = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.NAME))
-            val username = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.USERNAME))
-            val profile = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.PROFILE))
-            val avatar = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.AVATAR))
+            val id = getInt(getColumnIndexOrThrow(ID))
+            val name = getString(getColumnIndexOrThrow(NAME))
+            val username = getString(getColumnIndexOrThrow(USERNAME))
+            val profile = getString(getColumnIndexOrThrow(PROFILE))
+            val avatar = getString(getColumnIndexOrThrow(AVATAR))
 
             user = User(id, name, username, profile, avatar)
         }
 
         return user
+    }
+    
+    fun ContentValues.mapToObject(): User {
+        return User(
+            id = getAsInteger("id"),
+            name = getAsString("name"),
+            username = getAsString("username"),
+            profile = getAsString("profile"),
+            avatar = getAsString("avatar")
+        )
     }
 
     fun UserResponse.mapRemoteModelToLocal(): User {

@@ -14,7 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.marproject.githubuser.R
 import org.marproject.githubuser.data.local.entity.User
-import org.marproject.githubuser.data.local.sqlite.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import org.marproject.githubuser.data.local.room.DatabaseContract.CONTENT_URI
 import org.marproject.githubuser.data.network.response.UserResponse
 import org.marproject.githubuser.databinding.ActivityDetailUserBinding
 import org.marproject.githubuser.utils.adapter.SectionAdapter

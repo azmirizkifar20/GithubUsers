@@ -9,8 +9,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import org.marproject.githubuser.data.local.entity.User
-import org.marproject.githubuser.data.local.sqlite.DatabaseContract
-import org.marproject.githubuser.data.local.sqlite.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import org.marproject.githubuser.data.local.room.DatabaseContract.AVATAR
+import org.marproject.githubuser.data.local.room.DatabaseContract.CONTENT_URI
+import org.marproject.githubuser.data.local.room.DatabaseContract.ID
+import org.marproject.githubuser.data.local.room.DatabaseContract.NAME
+import org.marproject.githubuser.data.local.room.DatabaseContract.PROFILE
+import org.marproject.githubuser.data.local.room.DatabaseContract.USERNAME
 import org.marproject.githubuser.data.network.response.UserResponse
 import org.marproject.githubuser.data.network.service.ApiService
 import org.marproject.githubuser.utils.helpers.MappingHelper
@@ -68,11 +72,11 @@ class DetailViewModel(private val apiService: ApiService, private val applicatio
         uiScope.launch {
             withContext(Dispatchers.IO) {
                 val values = contentValuesOf(
-                    DatabaseContract.UserColumns._ID to data.id,
-                    DatabaseContract.UserColumns.NAME to data.name,
-                    DatabaseContract.UserColumns.USERNAME to data.username,
-                    DatabaseContract.UserColumns.PROFILE to data.profile,
-                    DatabaseContract.UserColumns.AVATAR to data.avatar
+                    ID to data.id,
+                    NAME to data.name,
+                    USERNAME to data.username,
+                    PROFILE to data.profile,
+                    AVATAR to data.avatar
                 )
 
                 application.contentResolver.insert(CONTENT_URI, values)

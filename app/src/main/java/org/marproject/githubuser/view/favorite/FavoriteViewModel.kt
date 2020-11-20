@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import org.marproject.githubuser.data.local.entity.User
-import org.marproject.githubuser.data.local.sqlite.DatabaseContract.UserColumns.Companion.CONTENT_URI
+import org.marproject.githubuser.data.local.room.DatabaseContract.CONTENT_URI
 import org.marproject.githubuser.utils.helpers.MappingHelper
 
 class FavoriteViewModel(private val application: Application) : ViewModel() {

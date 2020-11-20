@@ -1,7 +1,11 @@
 package org.marproject.consumerapp.utils
 
 import android.database.Cursor
-import org.marproject.consumerapp.data.DatabaseContract
+import org.marproject.consumerapp.data.DatabaseContract.AVATAR
+import org.marproject.consumerapp.data.DatabaseContract.ID
+import org.marproject.consumerapp.data.DatabaseContract.NAME
+import org.marproject.consumerapp.data.DatabaseContract.PROFILE
+import org.marproject.consumerapp.data.DatabaseContract.USERNAME
 import org.marproject.consumerapp.data.User
 
 object MappingHelper {
@@ -11,11 +15,11 @@ object MappingHelper {
 
         userCursor?.apply {
             while (moveToNext()) {
-                val id = getInt(getColumnIndexOrThrow(DatabaseContract.UserColumns._ID))
-                val name = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.NAME))
-                val username = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.USERNAME))
-                val profile = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.PROFILE))
-                val avatar = getString(getColumnIndexOrThrow(DatabaseContract.UserColumns.AVATAR))
+                val id = getInt(getColumnIndexOrThrow(ID))
+                val name = getString(getColumnIndexOrThrow(NAME))
+                val username = getString(getColumnIndexOrThrow(USERNAME))
+                val profile = getString(getColumnIndexOrThrow(PROFILE))
+                val avatar = getString(getColumnIndexOrThrow(AVATAR))
 
                 userList.add(User(id, name, username, profile, avatar))
             }
