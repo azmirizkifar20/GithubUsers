@@ -19,7 +19,7 @@ class MyApplication : Application() {
         }
     }
 
-    val viewModelModule = module {
+    private val viewModelModule = module {
         viewModel { MainViewModel(get()) }
     }
 }

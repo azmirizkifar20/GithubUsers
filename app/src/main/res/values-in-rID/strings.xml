@@ -22,7 +22,6 @@
     <string name="preference_name">alarmPref</string>
     <string name="saved_switch">savedSwitch</string>
     <string name="favorite_user">Pengguna favorit</string>
-    <string name="alarm_message">Alarm terpasang pada pukul 9</string>
     <string name="reminder_setting">Pengingat di jam 09.00</string>
     <string name="reminder_message">jangan lupa untuk cek aplikasi ini!</string>
 </resources>

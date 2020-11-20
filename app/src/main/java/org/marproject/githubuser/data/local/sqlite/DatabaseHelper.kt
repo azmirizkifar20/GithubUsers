@@ -10,7 +10,7 @@ internal class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATA
     companion object {
         private const val DATABASE_NAME = "dbuser"
         private const val DATABASE_VERSION = 1
-        private val SQL_CREATE_TABLE_USER = "CREATE TABLE $TABLE_NAME" +
+        private const val SQL_CREATE_TABLE_USER = "CREATE TABLE $TABLE_NAME" +
                 "(${DatabaseContract.UserColumns._ID} INTEGER PRIMARY KEY," +
                 "${DatabaseContract.UserColumns.NAME} TEXT NOT NULL," +
                 "${DatabaseContract.UserColumns.USERNAME} TEXT NOT NULL," +

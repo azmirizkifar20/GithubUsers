@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // init adapter
-        adapter = FavoriteAdapter(this)
+        adapter = FavoriteAdapter()
 
         // setup adapter
         with(binding.recyclerviewUser) {

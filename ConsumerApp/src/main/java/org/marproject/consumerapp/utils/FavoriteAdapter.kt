@@ -1,7 +1,5 @@
 package org.marproject.consumerapp.utils
 
-import android.app.Activity
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,7 @@ import kotlinx.android.synthetic.main.item_user.view.*
 import org.marproject.consumerapp.R
 import org.marproject.consumerapp.data.User
 
-class FavoriteAdapter(private val activity: Activity) : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
+class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
 
     private val users = ArrayList<User>()
 
